@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PositionController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::resource('positions', PositionController::class);
+Route::resource('employees', EmployeeController::class);
+Route::resource('countries', CountryController::class);
+Route::resource('cities', CityController::class);
+Route::get('/cities-by-country/{country}', [CityController::class, 'getCitiesByCountry']);
